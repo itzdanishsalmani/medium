@@ -4,4 +4,4 @@ node_modules/
 wrangler.toml
 # misc
 .DS_Store
-src/.env
+server/src/.env
