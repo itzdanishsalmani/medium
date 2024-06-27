@@ -1,6 +1,6 @@
 export function TopBar(){
     return (
-        <div className="py-2 px-8 flex justify-between">
+        <div className="py-2 px-8 flex justify-between border-b">
             <div className="flex items-center text-xl">
                 <img src="images.png" alt="logo" className="w-16 rounded-full" />
                 <div>Medium </div>
