@@ -7,22 +7,28 @@ export function SigninCard() {
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
 
-  function handle(){
+  async function handle(){
     if(email=="" || password ==""){
       toast.error("Fields cannot be empty")
       return
     }
-      axios.post("/user/signin",{
+      await axios.post("/user/signin",{
         email,
         password
-      },{headers:{
-        Authorization:`Bearer + ${localStorage.getItem("token")}`
-      }})
-      .then((res)=>{
-        toast.success("successful")
       })
       .then((res)=>{
-        toast.error(res)
+        if(res){
+          console.log(res.data);
+          const token = res.data.jwt;
+          localStorage.setItem("token",token);
+          toast.success("You signin successfully")
+        }
+      }).catch((error)=>{
+        if(error.res){
+          toast.error(error.res.data.error)
+        }else{
+          toast.error(error);
+        }
       })
   }
     return (
