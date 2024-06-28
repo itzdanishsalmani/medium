@@ -4,32 +4,29 @@ import { toast } from "react-toastify";
 
 
 export function SigninCard() {
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
+  const [email,setEmail] = useState<string>("");
+  const [password,setPassword] = useState<string>("");
 
-  async function handle(){
-    if(email=="" || password ==""){
-      toast.error("Fields cannot be empty")
-      return
+  async function handle() {
+    if (email === "" || password === "") {
+      toast.error("Fields cannot be empty");
+      return;
     }
-      await axios.post("/user/signin",{
+    try {
+      const res = await axios.post("/user/signin", {
         email,
         password
-      })
-      .then((res)=>{
-        if(res){
-          console.log(res.data);
-          const token = res.data.jwt;
-          localStorage.setItem("token",token);
-          toast.success("You signin successfully")
-        }
-      }).catch((error)=>{
-        if(error.res){
-          toast.error(error.res.data.error)
-        }else{
-          toast.error(error);
-        }
-      })
+      });
+      if (res.data) {
+        toast.success("Signin successfully");
+        const token = res.data.jwt;
+        localStorage.setItem("token", token);
+      } else {
+        toast.error(res.data.error);
+      }
+    } catch (error: any) {
+        toast.error(error.data.error);
+    }
   }
     return (
       <div className=" flex flex-col justify-center items-center h-screen">
