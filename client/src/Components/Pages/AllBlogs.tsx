@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { TopBar } from "../TopBar"
 import axios from "../axios/axiosConfig";
+import { useNavigate } from "react-router-dom";
 
 interface Blog {
     id: string
@@ -8,6 +9,8 @@ interface Blog {
     content: string
 }
 export function AllBlogs() {
+    const navigate = useNavigate();
+
     const [blogs, setBlogs] = useState<Blog[]>([]);
 
     useEffect(() => {
@@ -22,9 +25,11 @@ export function AllBlogs() {
             <TopBar />
             <div className=" flex justify-center border">
                 <div className="w-8/12">
-                    <div className="sections">
+                    <div className="sections ">
                             {blogs.map((blog) => (
-                                <div className="border-b ">
+                                <div className="border-b " onClick={()=>{
+                                    navigate("/blogs?id="+blog.id)
+                                }}>
                                     <div className="w-full h-12 text-3xl font-bold">{blog.title}</div>
                                     <div className="w-full h-20 text-xl">{blog.content}</div>
                                     </div>
