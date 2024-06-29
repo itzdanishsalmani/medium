@@ -39,7 +39,7 @@ blogRouter.post('/', async (c) => {
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate())
 
-  const authorId = c.get("userId")
+  const authorId = c.get("userId");
   const body = await c.req.json();
   const { success } = createBlog.safeParse(body);
 
@@ -116,8 +116,15 @@ blogRouter.get('/bulk', async (c) => {
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate())
 
-  const blogs = await prisma.post.findMany();
-
+  const blogs = await prisma.post.findMany({
+    include: {
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
   try {
     if (!blogs) {
       c.status(403);

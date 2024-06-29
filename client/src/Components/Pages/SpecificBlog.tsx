@@ -2,12 +2,8 @@ import { useEffect, useState } from "react";
 import { TopBar } from "../TopBar";
 import axios from "../axios/axiosConfig";
 import { useSearchParams } from "react-router-dom";
-
-interface Blog {
-  id: string;
-  title: string;
-  content: string;
-}
+import { Blog } from "../commons/com";
+import { formatDate } from "../commons/com";
 
 export function SpecificBlog() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -34,6 +30,7 @@ export function SpecificBlog() {
           <div className="sections">
             {blogs.map((blog) => (
               <div key={blog.id} className="border-b">
+                <div className="flex">{formatDate(blog.created_at)}</div>
                 <div className="pb-4 w-full text-3xl font-bold">{blog.title}</div>
                 <div className="w-full text-xl">{blog.content}</div>
               </div>
