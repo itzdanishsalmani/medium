@@ -23,7 +23,7 @@ export function SpecificBlog() {
     if (id) {
       axios.get(`/blog/${id}`,{
         headers:{
-          Authorization :`Bearer + ${localStorage.getItem("token")}`
+          Authorization: `Bearer ${token}`
         }
       })
         .then(res => {

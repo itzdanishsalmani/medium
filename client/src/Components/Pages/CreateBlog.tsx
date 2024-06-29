@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { TopBar } from "../NavBars"
 import { toast } from "react-toastify";
 import axios from "../axios/axiosConfig";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+
 export function CreateBlog() {
 
 const [title,setTitle] = useState<string>("");
@@ -14,7 +14,7 @@ const navigate = useNavigate();
 useEffect(() => { 
     const token = localStorage.getItem("token")
 if(!token){
-    toast.error("Signup")
+    toast.error("Please Signup")
     navigate("/signup")
     return
 }},[])
@@ -22,30 +22,32 @@ if(!token){
 async function handle(){
 
     if(title=="" || content==""){
-        toast.error("Fields canno be empty");
+        toast.error("Fields cannot be empty");
         return
     }
     try {
-        
-        await axios.post("/blog/",{
-            title,
-            content
+        const res = await axios.post("/blog", {
+          title,
+          content
         },{
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`
             }
-        })
-        .then((response)=>{
-            if(response.data){
-                toast.success("Blog Created Successfully")
-            }else{
-                toast.error(response.data.error);
-            }
-        })
-    } catch (error:any) {
-        toast.error(error)
+        });
+        if (res.data) {
+          toast.success("Blog Created Successfully");
+          navigate("/all")
+        } else {
+          toast.error(res.data.error);
+        }
+      } catch (error: any) {
+        if (error.response) {
+          toast.error(error.response.data.error);
+        } else {
+          toast.error(error.error);
+        }
+      }
     }
-}
     return (
         <div>
             <TopBar />

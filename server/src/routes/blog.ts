@@ -14,24 +14,24 @@ export const blogRouter = new Hono<{
   }
 }>()
 
-// blogRouter.use("/*", async (c: Context, next) => {
-//   const authHeader = c.req.header("authorization") || "";
+blogRouter.use("/*", async (c: Context, next) => {
+  const authHeader = c.req.header("authorization") || "";
 
-//   const token = authHeader.split(' ')[1];
+  const token = authHeader.split(' ')[1];
 
-//   const user = await verify(token, c.env.JWT_SECRET);
+  const user = await verify(token, c.env.JWT_SECRET);
 
-//   if (user) {
-//     c.set("userId", user.id);
-//     await next();
+  if (user) {
+    c.set("userId", user.id);
+    await next();
 
-//   } else {
-//     c.status(403);
-//     return c.json({
-//       error: "Unauthorized"
-//     })
-//   }
-// })
+  } else {
+    c.status(403);
+    return c.json({
+      error: "Unauthorized"
+    })
+  }
+})
 
 blogRouter.post('/', async (c) => {
 
@@ -66,7 +66,7 @@ blogRouter.post('/', async (c) => {
   } catch (error) {
     c.status(500);
     return c.json({
-      error: "Internal Server error"
+       error
     })
   }
 })

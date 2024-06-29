@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Blog } from "../commons/com";
 import { formatDate } from "../commons/com";
 import { toast } from "react-toastify";
+import { Footer } from "../Footer";
 
 export function AllBlogs() {
 
@@ -14,13 +15,13 @@ export function AllBlogs() {
     useEffect(() => { 
         const token = localStorage.getItem("token")
     if(!token){
-        toast.error("Signup")
+        toast.error("Please Signup")
         navigate("/signup")
         return
     }
         axios.get("/blog/bulk",{
             headers:{
-                Authorization: `Bearer + ${token}`
+                Authorization: `Bearer ${token}`
             }
         })
             .then(res => {
@@ -31,11 +32,11 @@ export function AllBlogs() {
     return (
         <div>
             <TopBar />
-            <div className=" flex justify-center border">
+            <div className=" flex justify-center ">
                 <div className="w-8/12">
                     <div className="sections mb-20">
                             {blogs.map((blog) => (
-                                <div className="border-b pb-4" onClick={()=>{
+                                <div key={blog.id} className="border-b pb-4" onClick={()=>{
                                     navigate("/blogs?id="+blog.id)
                                 }}>
                                     <div className="flex items-center space-x-4 py-2 ">
@@ -52,9 +53,7 @@ export function AllBlogs() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
-
-
-

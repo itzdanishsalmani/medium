@@ -4,22 +4,22 @@ import { toast } from "react-toastify"
 export function TopBar(){
     const navigate = useNavigate()
     return (
-        <div className="py-2 px-8 flex justify-between border-b">
+        <div className="py-2 px-24 flex justify-between border-b border-black">
             <div className="flex items-center text-xl">
                 <img src="images.png" alt="logo" className="w-16 rounded-full" />
                 <div>Medium </div>
             </div>
             <div className="flex items-center">
-                <div className="mx-2 px-2 cursor-pointer border rounded-lg "
+                <button className="mx-2 px-2 border rounded-lg "
                 onClick={()=>{
-                    navigate("/blog")
-                }}>Publish</div>
-                <div className="mx-2 px-2 cursor-pointer border rounded-lg "
+                    navigate("/create")
+                }}>Publish</button>
+                <button className="mx-2 px-2 border rounded-lg "
                 onClick={()=>{
                     localStorage.removeItem("token")
                     navigate("/")
                     toast.success("Logout")
-                }}>Logout</div>
+                }}>Logout</button>
             </div>
         </div>
     )   
@@ -28,9 +28,8 @@ export function TopBar(){
 export function RootTopBar(){
 const navigate = useNavigate()
 return (
-    <div className="py-2 px-8 flex justify-between border-b">
-        <div className="flex items-center text-xl">
-            <img src="images.png" alt="logo" className="w-16 rounded-full" />
+    <div className="py-2 px-24 flex justify-between border-b border-black">
+        <div className="py-3 flex items-center font-bold text-3xl">
             <div>Medium </div>
         </div>
         <div className="flex items-center">

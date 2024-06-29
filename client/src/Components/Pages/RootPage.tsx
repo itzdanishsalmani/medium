@@ -1,18 +1,32 @@
 import { RootTopBar } from "../NavBars"
-
-export function RootPage(){
-return (
-    <div>
-        <RootTopBar />
-        <div className="grid grid-cols-2 border-2">
-            <div className="grid col-span-8 border-2">
-            Human
-            stories & ideas
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio in illo accusantium quam harum reprehenderit voluptate amet, culpa quaerat sit vitae sed perspiciatis asperiores quidem nihil at? Nam, perferendis recusandae.
+import { Footer } from "../Footer"
+import { useNavigate } from "react-router-dom"
+export function RootPage() {
+    const navigate = useNavigate()
+    return (
+        <div className="h-screen">
+            <RootTopBar />
+            <div className="pl-24 grid grid-cols-12">
+                <div className="col-span-8 text-8xl pt-16">
+                    <div>
+                        Human <br />
+                        stories & ideas
+                        <br />
+                    </div>
+                    <div className="mt-12 text-2xl">
+                        A place to read, write, and deepen your understanding
+                    </div>
+                    <button className="bg-black text-white text-xl p-2 rounded-full" onClick={()=>{
+                        navigate("/all")
+                    }}>Start reading</button>
+                </div>
+                <div className="col-span-4 ">
+                <img src="main.webp" alt="main" />
+                </div>
             </div>
-           
-        
+            <div className="fixed bottom-0 left-0 w-full z-10 overflow:hidden">
+                <Footer/>
+            </div>
         </div>
-    </div>
-)
+    )
 }
