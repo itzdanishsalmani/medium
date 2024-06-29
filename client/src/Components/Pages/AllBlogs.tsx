@@ -27,7 +27,10 @@ export function AllBlogs() {
                                 <div className="border-b pb-4" onClick={()=>{
                                     navigate("/blogs?id="+blog.id)
                                 }}>
-                                    <div className="flex space-x-4 pb-2">
+                                    <div className="flex items-center space-x-4 py-2 ">
+                                    <div className="w-8 h-8 bg-slate-500 rounded-full flex items-center justify-center">
+                                    <div className="font-medium">{blog.author.name[0].toUpperCase()}</div>
+                                        </div>
                                         <div className="font-medium">{blog.author.name}</div>
                                         <div>{formatDate(blog.created_at)}</div>
                                     </div>
