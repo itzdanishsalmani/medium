@@ -1,12 +1,23 @@
 import { useState } from "react"
-import { TopBar } from "../TopBar"
+import { TopBar } from "../NavBars"
 import { toast } from "react-toastify";
 import axios from "../axios/axiosConfig";
-
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 export function CreateBlog() {
 
 const [title,setTitle] = useState<string>("");
 const [content,setContent] = useState<string>("");
+
+const navigate = useNavigate();
+
+useEffect(() => { 
+    const token = localStorage.getItem("token")
+if(!token){
+    toast.error("Signup")
+    navigate("/signup")
+    return
+}},[])
 
 async function handle(){
 
@@ -15,9 +26,14 @@ async function handle(){
         return
     }
     try {
+        
         await axios.post("/blog/",{
             title,
             content
+        },{
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
         })
         .then((response)=>{
             if(response.data){
@@ -30,7 +46,6 @@ async function handle(){
         toast.error(error)
     }
 }
-
     return (
         <div>
             <TopBar />

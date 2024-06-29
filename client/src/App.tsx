@@ -5,6 +5,8 @@ import { Signin } from './Components/Pages/Signin'
 import { CreateBlog } from './Components/Pages/CreateBlog'
 import { AllBlogs } from './Components/Pages/AllBlogs'
 import { SpecificBlog } from './Components/Pages/SpecificBlog'
+import { RootPage } from './Components/Pages/RootPage'
+
 function App() {
 
   return (
@@ -13,9 +15,10 @@ function App() {
         <Routes>
           <Route path="/signin" element={ <Signin /> } />
           <Route path="/signup" element={ <Signup /> } />
-          <Route path="/blog" element={ <CreateBlog /> } />
-          <Route path="/" element={ <AllBlogs/> } />
+          <Route path="/create" element={ <CreateBlog /> } />
+          <Route path="/all" element={ <AllBlogs/> } />
           <Route path='/blogs/' element={ <SpecificBlog/> } />
+          <Route path='/' element={ <RootPage/> } />
         </Routes>
       </BrowserRouter>
     </div>

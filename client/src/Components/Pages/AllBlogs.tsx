@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react"
-import { TopBar } from "../TopBar"
+import { TopBar } from "../NavBars"
 import axios from "../axios/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { Blog } from "../commons/com";
 import { formatDate } from "../commons/com";
+import { toast } from "react-toastify";
 
 export function AllBlogs() {
-    const navigate = useNavigate();
 
     const [blogs, setBlogs] = useState<Blog[]>([]);
+    const navigate = useNavigate();
     
     useEffect(() => { 
-        axios.get("/blog/bulk")
+        const token = localStorage.getItem("token")
+    if(!token){
+        toast.error("Signup")
+        navigate("/signup")
+        return
+    }
+        axios.get("/blog/bulk",{
+            headers:{
+                Authorization: `Bearer + ${token}`
+            }
+        })
             .then(res => {
                 setBlogs(res.data.blogs);
                 console.log(res.data.blogs);
@@ -44,3 +55,6 @@ export function AllBlogs() {
         </div>
     )
 }
+
+
+

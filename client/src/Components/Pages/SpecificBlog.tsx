@@ -1,18 +1,31 @@
 import { useEffect, useState } from "react";
-import { TopBar } from "../TopBar";
+import { TopBar } from "../NavBars";
 import axios from "../axios/axiosConfig";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Blog } from "../commons/com";
 import { formatDate } from "../commons/com";
+import { toast } from "react-toastify";
 
 export function SpecificBlog() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
 
+  const navigate = useNavigate()
+
   useEffect(() => {
+      const token = localStorage.getItem("token")
+  if(!token){
+      toast.error("Signup")
+      navigate("/signup")
+      return
+  }
     if (id) {
-      axios.get(`/blog/${id}`)
+      axios.get(`/blog/${id}`,{
+        headers:{
+          Authorization :`Bearer + ${localStorage.getItem("token")}`
+        }
+      })
         .then(res => {
           setBlogs([res.data.blog]);
         })
