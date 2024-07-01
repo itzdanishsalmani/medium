@@ -33,11 +33,11 @@ return (
             <div>Medium </div>
         </div>
         <div className="flex items-center">
-            <div className="bg-black text-white mx-2 py-2 px-4 cursor-pointer border rounded-full "
+            <div className="bg-black text-white md:mx-2 md:py-2 md:px-4 cursor-pointer border rounded-full "
             onClick={()=>{
                 navigate("/signin")
             }}>Sign in</div>
-            <div className="bg-black text-white mx-2 py-2 px-4 cursor-pointer border rounded-full "
+            <div className="bg-black text-white md:mx-2 md:py-2 md:px-4 cursor-pointer border rounded-full "
             onClick={()=>{
                 navigate("/signup")
             }}>Get Started</div>
