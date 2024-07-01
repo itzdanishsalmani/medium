@@ -47,7 +47,7 @@ export function AllBlogs() {
                                         <div>{formatDate(blog.created_at)}</div>
                                     </div>
                                     <div className="w-full h-12 text-lg md:text-3xl font-bold overflow-hidden line-clamp-2 ">{blog.title}</div>
-                                    <div className="w-full md:h-20 md:text-xl overflow-hidden line-clamp-3">{blog.content}</div>
+                                    <div className="w-full text-base md:h-20 md:text-xl overflow-hidden line-clamp-3">{blog.content}</div>
                                 </div>
                             ))}
                     </div>

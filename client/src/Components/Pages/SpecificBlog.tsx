@@ -39,13 +39,13 @@ export function SpecificBlog() {
     <div>
       <TopBar />
       <div className="flex mt-4 justify-center grid-col-2">
-        <div className="pl-4 w-8/12 pr-4 md:pr-20">
+        <div className="pl-2 w-8/12 pr-2 md:pr-20">
           <div className="sections">
             {blogs.map((blog) => (
               <div key={blog.id} className="border-b">
-                <div className="pb-2 w-full text-lg md:text-3xl font-bold">{blog.title}</div>
+                <div className="pb-2 w-full text-base md:text-3xl font-bold">{blog.title}</div>
                 <div>Posted on {formatDate(blog.created_at)}</div>
-                <div className="w-full whitespace-pre-wrap text-xl mt-8 mb-20">{blog.content}</div>
+                <div className="w-full whitespace-pre-wrap text-sm mt-8 mb-20">{blog.content}</div>
               </div>
             ))}
           </div>
