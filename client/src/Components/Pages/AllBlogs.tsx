@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { TopBar } from "../NavBars"
+import { TopBar } from "../UI/NavBars"
 import axios from "../axios/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { Blog } from "../commons/com";
 import { formatDate } from "../commons/com";
 import { toast } from "react-toastify";
-import { Footer } from "../Footer";
+import { Footer } from "../UI/Footer";
 
 export function AllBlogs() {
 
@@ -46,7 +46,7 @@ export function AllBlogs() {
                                         <div className="font-medium">{blog.author.name}</div>
                                         <div>{formatDate(blog.created_at)}</div>
                                     </div>
-                                    <div className="w-full h-12 text-lg md:text-3xl font-bold overflow-hidden line-clamp-2 ">{blog.title}</div>
+                                    <div className="w-full h-12 text-lg md:text-3xl font-bold overflow-hidden pb-2 line-clamp-2 ">{blog.title}</div>
                                     <div className="w-full text-base md:h-20 md:text-xl overflow-hidden line-clamp-3">{blog.content}</div>
                                 </div>
                             ))}

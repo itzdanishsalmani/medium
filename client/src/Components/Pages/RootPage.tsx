@@ -1,5 +1,5 @@
-import { RootTopBar } from "../NavBars"
-import { Footer } from "../Footer"
+import { RootTopBar } from "../UI/NavBars"
+import { Footer } from "../UI/Footer"
 import { useNavigate } from "react-router-dom"
 
 export function RootPage() {

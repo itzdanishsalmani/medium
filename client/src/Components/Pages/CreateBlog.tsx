@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react"
-import { TopBar } from "../NavBars"
+import { TopBar } from "../UI/NavBars"
 import { toast } from "react-toastify";
 import axios from "../axios/axiosConfig";
 import { useNavigate } from "react-router-dom";

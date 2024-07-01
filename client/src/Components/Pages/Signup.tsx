@@ -1,5 +1,5 @@
-import { SignupCard } from "../SignupCard"
-import { BesideCard } from "../BesideCard"
+import { SignupCard } from "../UI/SignupCard"
+import { BesideCard } from "../UI/BesideCard"
 
 export function Signup(){
     return(

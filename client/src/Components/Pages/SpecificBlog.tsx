@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { TopBar } from "../NavBars";
+import { TopBar } from "../UI/NavBars";
 import axios from "../axios/axiosConfig";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Blog } from "../commons/com";
 import { formatDate } from "../commons/com";
 import { toast } from "react-toastify";
-import { Footer } from "../Footer";
+import { Footer } from "../UI/Footer";
 export function SpecificBlog() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [searchParams] = useSearchParams();
