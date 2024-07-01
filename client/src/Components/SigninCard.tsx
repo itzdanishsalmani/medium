@@ -1,5 +1,5 @@
 import axios from "../Components/axios/axiosConfig";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -9,6 +9,13 @@ export function SigninCard() {
   const [password,setPassword] = useState<string>("");
 
   const navigate = useNavigate()
+  
+  useEffect(()=>{
+
+  if(localStorage.getItem("token")){
+    navigate("/all")
+  }
+  },[])
   async function handle() {
     if (email === "" || password === "") {
       toast.error("Fields cannot be empty");

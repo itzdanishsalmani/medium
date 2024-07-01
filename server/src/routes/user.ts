@@ -64,14 +64,8 @@ userRouter.post('/signin', async (c) => {
     const body = await c.req.json();
     const { success } = signinSchema.safeParse(body);
 
-    if (!success) {
-        c.status(403);
-        return c.json({
-            error: "Inputs cannot be empty"
-        })
-    }
     try {
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findFirst({
             where: {
                 email: body.email,
                 password: body.password
@@ -81,7 +75,7 @@ userRouter.post('/signin', async (c) => {
         if (!user) {
             c.status(404);
             return c.json({
-                error: "user not found"
+                error: "User not found Please Signup"
             })
         }
         const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
