@@ -2,7 +2,7 @@ import { Hono, Context } from 'hono'
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { verify } from 'hono/jwt'
-import { createBlog,updateBlog } from "@danishsalmani/medium-common";
+import { createBlog, updateBlog } from "@danishsalmani/medium-common";
 
 export const blogRouter = new Hono<{
   Bindings: {
@@ -66,7 +66,7 @@ blogRouter.post('/', async (c) => {
   } catch (error) {
     c.status(500);
     return c.json({
-       error
+      error
     })
   }
 })
@@ -129,9 +129,9 @@ blogRouter.get('/bulk', async (c) => {
     if (!blogs) {
       c.status(403);
       return c.json({
-        error:"some error while fetching blogs"
+        error: "some error while fetching blogs"
       })
-    }else{
+    } else {
       return c.json({
         blogs
       })
@@ -155,8 +155,14 @@ blogRouter.get('/:id', async (c) => {
   try {
     const blog = await prisma.post.findFirst({
       where: {
-        id: id
-      }
+        id: id,
+      },include: {
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
     })
     return c.json({
       blog

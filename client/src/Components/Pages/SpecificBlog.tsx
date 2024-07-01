@@ -5,7 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Blog } from "../commons/com";
 import { formatDate } from "../commons/com";
 import { toast } from "react-toastify";
-
+import { Footer } from "../Footer";
 export function SpecificBlog() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [searchParams] = useSearchParams();
@@ -14,15 +14,15 @@ export function SpecificBlog() {
   const navigate = useNavigate()
 
   useEffect(() => {
-      const token = localStorage.getItem("token")
-  if(!token){
+    const token = localStorage.getItem("token")
+    if (!token) {
       toast.error("Signup")
       navigate("/signup")
       return
-  }
+    }
     if (id) {
-      axios.get(`/blog/${id}`,{
-        headers:{
+      axios.get(`/blog/${id}`, {
+        headers: {
           Authorization: `Bearer ${token}`
         }
       })
@@ -38,19 +38,35 @@ export function SpecificBlog() {
   return (
     <div>
       <TopBar />
-      <div className="flex justify-center border">
-        <div className="w-8/12">
+      <div className="flex justify-center grid-col-2">
+        <div className="w-8/12 pr-20">
           <div className="sections">
             {blogs.map((blog) => (
               <div key={blog.id} className="border-b">
-                <div className="flex">{formatDate(blog.created_at)}</div>
-                <div className="pb-4 w-full text-3xl font-bold">{blog.title}</div>
-                <div className="w-full text-xl">{blog.content}</div>
+                <div className="pb-2 w-full text-3xl font-bold">{blog.title}</div>
+                <div>Posted on {formatDate(blog.created_at)}</div>
+                <div className="w-full whitespace-pre-wrap text-xl mt-8 mb-20">{blog.content}</div>
               </div>
             ))}
           </div>
         </div>
+        <div>
+          {blogs.map((blog) => (
+            <div key={blog.id} className="">Author
+              <div className="flex items-center space-x-4 py-2 ">
+                <div className="w-8 h-8 bg-green-600 text-slate-200 rounded-full flex items-center justify-center">
+                  <div className="font-medium">{blog.author.name[0].toUpperCase()}</div>
+                </div>
+                <div className="font-medium">{blog.author.name}</div>
+              </div>              
+              </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
 }
+

@@ -40,7 +40,7 @@ export function AllBlogs() {
                                     navigate("/blogs?id="+blog.id)
                                 }}>
                                     <div className="flex items-center space-x-4 py-2 ">
-                                    <div className="w-8 h-8 bg-slate-500 rounded-full flex items-center justify-center">
+                                    <div className="w-8 h-8 bg-green-600 text-slate-200 rounded-full flex items-center justify-center">
                                     <div className="font-medium">{blog.author.name[0].toUpperCase()}</div>
                                         </div>
                                         <div className="font-medium">{blog.author.name}</div>

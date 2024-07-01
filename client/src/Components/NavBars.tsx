@@ -10,11 +10,11 @@ export function TopBar(){
                 <div>Medium </div>
             </div>
             <div className="flex items-center">
-                <button className="mx-2 px-2 border rounded-lg "
+                <button className="bg-green-600 text-white mx-2 py-2 px-4 border rounded-full "
                 onClick={()=>{
                     navigate("/create")
                 }}>Publish</button>
-                <button className="mx-2 px-2 border rounded-lg "
+                <button className="bg-green-600 text-white mx-2 py-2 px-4  border rounded-full"
                 onClick={()=>{
                     localStorage.removeItem("token")
                     navigate("/")
@@ -33,11 +33,11 @@ return (
             <div>Medium </div>
         </div>
         <div className="flex items-center">
-            <div className="mx-2 p-2 cursor-pointer border rounded-2xl "
+            <div className="bg-black text-white mx-2 py-2 px-4 cursor-pointer border rounded-full "
             onClick={()=>{
                 navigate("/signin")
             }}>Sign in</div>
-            <div className="bg-black text-white mx-2 p-2 cursor-pointer border rounded-2xl "
+            <div className="bg-black text-white mx-2 py-2 px-4 cursor-pointer border rounded-full "
             onClick={()=>{
                 navigate("/signup")
             }}>Get Started</div>

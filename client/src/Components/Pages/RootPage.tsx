@@ -16,7 +16,7 @@ export function RootPage() {
                     <div className="mt-12 text-2xl">
                         A place to read, write, and deepen your understanding
                     </div>
-                    <button className="bg-black text-white text-xl p-2 rounded-full" onClick={()=>{
+                    <button className="bg-black text-white text-xl px-4 py-2 rounded-full" onClick={()=>{
                         navigate("/all")
                     }}>Start reading</button>
                 </div>
@@ -24,7 +24,7 @@ export function RootPage() {
                 <img src="main.webp" alt="main" />
                 </div>
             </div>
-            <div className="fixed bottom-0 left-0 w-full z-10 overflow:hidden">
+            <div>
                 <Footer/>
             </div>
         </div>

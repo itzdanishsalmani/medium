@@ -1,8 +1,9 @@
 
 export function Footer(){
     return (
+        <div className="fixed bottom-0 left-0 w-full z-10 overflow:hidden">
         <div className="bg-white py-4 border-t border-black ">
-            <div className="flex justify-center space-x-2">
+            <div className="flex justify-center space-x-2 cursor-pointer">
             <div>Help</div>
             <div>Status</div>
             <div>About</div>
@@ -14,6 +15,7 @@ export function Footer(){
             <div>Text to Speech</div>
             <div>Teams</div>
             </div>
+        </div>
         </div>
     )   
 }
