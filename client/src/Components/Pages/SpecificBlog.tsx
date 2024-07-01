@@ -16,8 +16,8 @@ export function SpecificBlog() {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (!token) {
-      toast.error("Signup")
-      navigate("/signup")
+      toast.error("Please signin")
+      navigate("/signin")
       return
     }
     if (id) {
