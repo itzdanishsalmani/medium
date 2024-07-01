@@ -7,7 +7,7 @@ export function RootPage() {
     return (
         <div className="h-screen">
             <RootTopBar />
-            <div className="pl-12 md:pl-24 md:grid grid-cols-12">
+            <div className="pl-4 md:pl-24 md:grid grid-cols-12">
                 <div className="col-span-8 text-6xl md:text-8xl pt-16">
                     <div>
                         Human <br />
