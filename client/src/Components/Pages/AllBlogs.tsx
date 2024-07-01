@@ -15,8 +15,8 @@ export function AllBlogs() {
     useEffect(() => { 
         const token = localStorage.getItem("token")
     if(!token){
-        toast.error("Please Signup")
-        navigate("/signup")
+        toast.error("Please Signin")
+        navigate("/signin")
         return
     }
         axios.get("/blog/bulk",{
@@ -32,11 +32,11 @@ export function AllBlogs() {
     return (
         <div>
             <TopBar />
-            <div className=" flex justify-center ">
+            <div className=" flex justify-center" >
                 <div className="w-8/12">
-                    <div className="sections mb-20">
+                    <div className="sections mb-4 md:mb-20">
                             {blogs.map((blog) => (
-                                <div key={blog.id} className="border-b pb-4" onClick={()=>{
+                                <div key={blog.id} className="border-b md:pb-4" onClick={()=>{
                                     navigate("/blogs?id="+blog.id)
                                 }}>
                                     <div className="flex items-center space-x-4 py-2 ">
@@ -46,8 +46,8 @@ export function AllBlogs() {
                                         <div className="font-medium">{blog.author.name}</div>
                                         <div>{formatDate(blog.created_at)}</div>
                                     </div>
-                                    <div className="w-full h-12 text-3xl font-bold overflow-hidden ">{blog.title}</div>
-                                    <div className="w-full h-20 text-xl overflow-hidden line-clamp-3">{blog.content}</div>
+                                    <div className="w-full h-12 text-lg md:text-3xl font-bold overflow-hidden line-clamp-2 ">{blog.title}</div>
+                                    <div className="w-full md:h-20 md:text-xl overflow-hidden line-clamp-3">{blog.content}</div>
                                 </div>
                             ))}
                     </div>

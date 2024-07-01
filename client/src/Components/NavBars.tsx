@@ -4,13 +4,13 @@ import { toast } from "react-toastify"
 export function TopBar(){
     const navigate = useNavigate()
     return (
-        <div className="py-2 px-24 flex justify-between border-b border-black">
+        <div className="py-2 p-2 md:px-24 flex justify-between border-b border-black">
             <div className="flex items-center text-xl">
                 <img src="images.png" alt="logo" className="w-16 rounded-full" />
                 <div>Medium </div>
             </div>
             <div className="flex items-center">
-                <button className="bg-green-600 text-white mx-2 py-2 px-4 border rounded-full "
+                <button className="bg-green-600 text-white md:mx-2 py-2 px-4 border rounded-full "
                 onClick={()=>{
                     navigate("/create")
                 }}>Publish</button>
@@ -28,7 +28,7 @@ export function TopBar(){
 export function RootTopBar(){
 const navigate = useNavigate()
 return (
-    <div className="py-2 px-24 flex justify-between border-b border-black">
+    <div className="py-2 pl-12 md:px-24 flex justify-between border-b border-black">
         <div className="py-3 flex items-center font-bold text-3xl">
             <div>Medium </div>
         </div>

@@ -45,11 +45,14 @@ export function SignupCard() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <div className="space-y-4 bg-white rounded-lg p-4">
+      <div className="space-y-4 bg-white rounded-lg p-4 hover:bg-slate-200">
         <div className="w-80 text-center space-y-4">
           <div className="text-3xl font-bold">Create an account</div>
           <div>
-            Already have an account? <span className="underline">Login</span>
+            Already have an account? <span className="underline cursor-pointer"
+            onClick={()=>{
+              navigate("/signin")
+            }}>Login</span>
           </div>
         </div>
         <div>Username</div>
@@ -74,7 +77,7 @@ export function SignupCard() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div
-          className="cursor-pointer text-center bg-black text-white rounded p-2"
+          className="cursor-pointer text-center bg-green-600 text-white rounded-lg p-2"
           onClick={handle}
         >
           Sign Up

@@ -8,12 +8,12 @@ export function Footer(){
             <div>Status</div>
             <div>About</div>
             <div>Careers</div>
-            <div>Press</div>
-            <div>Blog</div>
-            <div>Privacy</div>
-            <div>Terms</div>
-            <div>Text to Speech</div>
-            <div>Teams</div>
+            <div className="hidden md:block">Press</div>
+          <div className="hidden md:block">Blog</div>
+          <div className="hidden md:block">Privacy</div>
+          <div className="hidden md:block">Terms</div>
+          <div className="hidden md:block">Text to Speech</div>
+          <div className="hidden md:block">Teams</div>
             </div>
         </div>
         </div>
