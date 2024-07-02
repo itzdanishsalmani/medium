@@ -6,6 +6,7 @@ import { CreateBlog } from './Components/Pages/CreateBlog'
 import { AllBlogs } from './Components/Pages/AllBlogs'
 import { SpecificBlog } from './Components/Pages/SpecificBlog'
 import { RootPage } from './Components/Pages/RootPage'
+import { MyBlogs } from './Components/Pages/MyBlogs'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/all" element={ <AllBlogs/> } />
           <Route path='/blogs/' element={ <SpecificBlog/> } />
           <Route path='/' element={ <RootPage/> } />
+          <Route path='/my' element={ <MyBlogs/> } />
         </Routes>
       </BrowserRouter>
     </div>

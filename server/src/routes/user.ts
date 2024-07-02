@@ -112,27 +112,20 @@ userRouter.get('/me', async (c: Context) => {
     const userId = user.id;
 
     try {
-        const posts = await prisma.post.findMany({
+        const blogs = await prisma.post.findMany({
             where: {
                 authorId: userId,
             },
             select: {
+                id: true,
                 title: true,
                 content: true,
-                id: true,
             },
         });
-
-        if (!posts) {
-            c.status(404);
-            return c.json({ error: "User not found" });
-        }
-        return c.json(posts);
+        return c.json(blogs);
 
     } catch (error:any) {
         c.status(500);
         return c.json({ error });
     }
 });
-
-
