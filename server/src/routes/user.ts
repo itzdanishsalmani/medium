@@ -1,15 +1,19 @@
-import { Hono } from 'hono'
+import { Hono, Context } from 'hono'
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { sign } from 'hono/jwt'
 import { signupSchema, signinSchema } from "@danishsalmani/medium-common"
+import { verify } from 'hono/jwt'
 
 export const userRouter = new Hono<{
     Bindings: {
-        DATABASE_URL: string,
-        JWT_SECRET: string
+        DATABASE_URL: string;
+        JWT_SECRET: string;
+    },
+    Variables: {
+        userId: string;
     }
-}>();
+}>()
 
 userRouter.post('/signup', async (c) => {
 
@@ -86,3 +90,49 @@ userRouter.post('/signin', async (c) => {
         return c.json({ error })
     }
 })
+
+userRouter.get('/me', async (c: Context) => {
+
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate())
+
+    const authHeader = c.req.header("authorization") || "";
+
+    const token = authHeader.split(' ')[1];
+
+    let user:any;
+    try {
+        user = await verify(token, c.env.JWT_SECRET);
+    } catch (error) {
+        c.status(403);
+        return c.json({ error: "Invalid or expired token" });
+    }
+    
+    const userId = user.id;
+
+    try {
+        const posts = await prisma.post.findMany({
+            where: {
+                authorId: userId,
+            },
+            select: {
+                title: true,
+                content: true,
+                id: true,
+            },
+        });
+
+        if (!posts) {
+            c.status(404);
+            return c.json({ error: "User not found" });
+        }
+        return c.json(posts);
+
+    } catch (error:any) {
+        c.status(500);
+        return c.json({ error });
+    }
+});
+
+
