@@ -7,7 +7,12 @@ export interface Blog {
         name: string;
       };
   }
-  
+
+  export interface Blogs {
+    id: string;
+    title: string;
+    content: string;
+  }
 export const formatDate = (dateString: Date) => {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, '0');

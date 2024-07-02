@@ -108,7 +108,7 @@ userRouter.get('/me', async (c: Context) => {
         c.status(403);
         return c.json({ error: "Invalid or expired token" });
     }
-    
+
     const userId = user.id;
 
     try {
