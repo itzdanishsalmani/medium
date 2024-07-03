@@ -71,7 +71,7 @@ blogRouter.post('/', async (c) => {
   }
 })
 
-blogRouter.put('/', async (c) => {
+blogRouter.put('/:id', async (c) => {
 
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
@@ -79,18 +79,12 @@ blogRouter.put('/', async (c) => {
 
   const body = await c.req.json();
   const { success } = updateBlog.safeParse(body);
-
-  if (!success) {
-    c.status(403);
-    return c.json({
-      error: "Fields cannot be empty"
-    })
-  }
+  const id = c.req.param('id')
 
   try {
     const blog = await prisma.post.update({
       where: {
-        id: body.id
+        id:id
       },
 
       data: {

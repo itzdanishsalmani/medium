@@ -34,9 +34,13 @@ export function MyBlogs() {
             <TopBar />
             <div className="flex justify-center">
                 <div className="w-8/12">
-                    <div className="sections mb-4 md:mb-20  ">
+                    <div className="sections mb-4 md:mb-20">
                             {blogs.map((blog) => (
-                                <div key={blog.id} className="border-b md:pb-4" >
+                                <div key={blog.id} className="border-b md:pb-4" onClick={
+                                    ()=>{
+                                        navigate("/edit?id="+blog.id)
+                                    }
+                                }>
                                     <div className="w-full h-12 text-lg md:text-3xl font-bold overflow-hidden pb-2 line-clamp-2">
                                         {blog.title}
                                     </div>
@@ -44,9 +48,7 @@ export function MyBlogs() {
                                         {blog.content}
                                     </div>
                                 </div>
-                            ))
-                        
-                        }
+                            ))}
                     </div>
                 </div>
             </div>
