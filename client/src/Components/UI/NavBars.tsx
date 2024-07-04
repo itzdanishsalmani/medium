@@ -10,7 +10,7 @@ export function TopBar() {
         <div>
             <div className="z-0	 p-2 md:px-24 flex justify-between border-b border-black">
                 <div className="flex items-center text-xl">
-                    <img src="images.png" alt="logo" className="w-16 rounded-full" />
+                    <img src="logo.png" alt="logo" className="w-16 rounded-full" />
                     <div>Medium </div>
                 </div>
                 <div className=" flex items-center">
