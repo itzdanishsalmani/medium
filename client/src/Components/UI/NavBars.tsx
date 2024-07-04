@@ -44,13 +44,13 @@ export function TopBar() {
             </div>
 
             {isMenuOpen && (
-                <div className="phone z-10 p-2 fixed top-0 right-0 bg-white border-b border-black w-8/12 h-full text-lg">
+                <div className="phone z-10 p-2 fixed top-0 right-0 bg-slate-200 bg-opacity-80 border-b border-black w-6/12 h-full font-medium text-lg">
                     <div className="flex justify-end ">
                         <img src="close.svg" alt="Close" className="w-10 h-10 cursor-pointer"
                             onClick={() => setIsMenuOpen(false)} />
                     </div>
                     <div className="flex flex-col items-center space-y-4 cursor-pointer">
-                        <div className="p-2 ml-2"
+                        <div className="mt-8 p-2 ml-2"
                             onClick={() => {
                                 navigate("/all");
                                 setIsMenuOpen(false);
