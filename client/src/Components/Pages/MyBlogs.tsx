@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Footer } from "../UI/Footer";
 import { Blogs } from "../commons/com";
+import { Skeleton } from "../UI/Skeleton";
 
 export function MyBlogs() {
     const [blogs, setBlogs] = useState<Blogs[]>([]);
+    const [loading,setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,9 +27,28 @@ export function MyBlogs() {
         })
         .then(res => {
             setBlogs(res.data);
+            setLoading(false)
         })
         
-    }, [navigate]);
+    }, []);
+
+    if(loading){
+        return(
+            <div>
+                <TopBar/>
+                <div className="flex justify-center">
+                    <div className="w-8/12">
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                    </div>
+                </div>
+                <Footer/>
+            </div>
+        )
+    }
 
     return (
         <div>

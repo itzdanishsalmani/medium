@@ -3,6 +3,7 @@ import { TopBar } from "../UI/NavBars";
 import { toast } from "react-toastify";
 import axios from "../axios/axiosConfig";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { Skeleton } from "../UI/Skeleton";
 
 export function EditBlog() {
     const [title, setTitle] = useState<string>("");
@@ -68,8 +69,21 @@ export function EditBlog() {
         }
     }
 
-    if (loading) {
-        return <div>Loading...</div>; // Show a loading message while fetching data
+    if(loading){
+        return(
+            <div>
+                <TopBar/>
+                <div className="flex justify-center">
+                    <div className="w-8/12">
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     return (

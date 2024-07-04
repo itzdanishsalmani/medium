@@ -6,11 +6,15 @@ import { Blog } from "../commons/com";
 import { formatDate } from "../commons/com";
 import { toast } from "react-toastify";
 import { Footer } from "../UI/Footer";
+import { Skeleton } from "../UI/Skeleton";
 
 export function AllBlogs() {
 
+    
     const [blogs, setBlogs] = useState<Blog[]>([]);
+    const [loading,setLoading] = useState(true)
     const navigate = useNavigate();
+
     
     useEffect(() => { 
         const token = localStorage.getItem("token")
@@ -26,8 +30,28 @@ export function AllBlogs() {
         })
             .then(res => {
                 setBlogs(res.data.blogs);
+                setLoading(false)
             })
+
     },[])
+
+    if (loading) {
+        return (
+            <div>
+                <TopBar />
+                <div className="flex justify-center">
+                    <div className="w-8/12">
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                    </div>
+                </div>
+                <Footer />
+            </div>
+        );
+    }
     return (
         <div>
             <TopBar />
