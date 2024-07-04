@@ -56,7 +56,7 @@ export function EditBlog() {
             });
             if (res.data) {
                 toast.success("Blog Edited Successfully");
-                navigate("/my");
+                navigate("/myblogs");
             } else {
                 toast.error(res.data.error);
             }
