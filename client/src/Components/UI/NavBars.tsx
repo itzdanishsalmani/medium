@@ -10,16 +10,24 @@ export function TopBar(){
                 <div>Medium </div>
             </div>
             <div className="flex items-center">
-                <button className="bg-green-600 text-white p-2 ml-2 md:mx-2 md:py-2 md:px-4 border rounded-full"
+                <div className="p-2 ml-2 md:mx-2 md:py-2 md:px-4 cursor-pointer"
+                onClick={()=>{
+                    navigate("/all")
+                }}>Read</div>
+                <div className="p-2 ml-2 md:mx-2 md:py-2 md:px-4 cursor-pointer"
                 onClick={()=>{
                     navigate("/create")
-                }}>Publish</button>
-                <button className="bg-green-600 text-white p-2 ml-2 md:mx-2 md:py-2 md:px-4 border rounded-full"
+                }}>Publish</div>
+                <div className="p-2 ml-2 md:mx-2 md:py-2 md:px-4 cursor-pointer"
                 onClick={()=>{
-                    localStorage.removeItem("token")
+                    navigate("/myblogs")
+                }}>My Blogs</div>
+                <div className="p-2 ml-2 md:mx-2 md:py-2 md:px-4 cursor-pointer"
+                onClick={()=>{
+                    localStorage.removeItem("token");
                     navigate("/")
                     toast.success("Logout")
-                }}>Logout</button>
+                }}>Logout</div>
             </div>
         </div>
     )   
