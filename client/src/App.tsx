@@ -21,7 +21,7 @@ function App() {
           <Route path="/all" element={ <AllBlogs/> } />
           <Route path='/blogs/' element={ <SpecificBlog/> } />
           <Route path='/' element={ <RootPage/> } />
-          <Route path='/my' element={ <MyBlogs/> } />
+          <Route path='/myblogs' element={ <MyBlogs/> } />
           <Route path='/edit' element={ <EditBlog/> } /> 
         </Routes>
       </BrowserRouter>
