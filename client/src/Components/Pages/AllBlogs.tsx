@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { TopBar } from "../UI/NavBars"
 import axios from "../axios/axiosConfig";
 import { useNavigate } from "react-router-dom";
-import { Blog } from "../commons/com";
-import { formatDate } from "../commons/com";
+import { Blog } from "../commons/commons";
+import { formatDate } from "../commons/commons";
 import { toast } from "react-toastify";
 import { Footer } from "../UI/Footer";
 import { Skeleton } from "../UI/Skeleton";

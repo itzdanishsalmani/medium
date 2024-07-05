@@ -4,7 +4,7 @@ import axios from "../axios/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Footer } from "../UI/Footer";
-import { Blogs } from "../commons/com";
+import { Blogs } from "../commons/commons";
 import { Skeleton } from "../UI/Skeleton";
 
 export function MyBlogs() {
