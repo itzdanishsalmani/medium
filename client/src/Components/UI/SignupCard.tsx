@@ -18,7 +18,10 @@ export function SignupCard() {
   async function handle() {
     if (name === "" || email === "" || password === "") {
       toast.error("Fields cannot be empty");
-      return;
+      return
+    }else if(password.length<6){
+      toast.error("Password must be at least 6 characters")
+      return
     }
     try {
       const res = await axios.post("/user/signup", {

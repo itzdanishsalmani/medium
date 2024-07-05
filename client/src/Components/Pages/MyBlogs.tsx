@@ -29,8 +29,9 @@ export function MyBlogs() {
             setBlogs(res.data);
             setLoading(false)
         })
-        
+ 
     }, []);
+
 
     if(loading){
         return(
@@ -55,6 +56,11 @@ export function MyBlogs() {
             <TopBar />
             <div className="flex justify-center">
                 <div className="w-8/12">
+                {blogs.length === 0 ? (
+                        <div className="text-center text-lg md:text-3xl font-medium ">
+                            You have no blogs Let's publish
+                        </div>
+                    ) : (
                     <div className="sections mb-4 md:mb-20">
                             {blogs.map((blog) => (
                                 <div key={blog.id} className="border-b md:pb-4" onClick={
@@ -71,6 +77,7 @@ export function MyBlogs() {
                                 </div>
                             ))}
                     </div>
+                )}
                 </div>
             </div>
             <Footer />

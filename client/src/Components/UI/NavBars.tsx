@@ -44,9 +44,9 @@ export function TopBar() {
             </div>
 
             {isMenuOpen && (
-                <div className="phone z-10 p-2 fixed top-0 right-0 border-l bg-white border-black w-6/12 h-screen font-medium text-lg">
+                <div className="phone z-10 p-2 fixed top-0 right-0 bg-white border-black w-6/12 h-screen font-medium text-lg">
                     <div className="flex justify-end ">
-                        <img src="close.svg" alt="Close" className="w-10 h-10 cursor-pointer"
+                        <img src="close.svg" alt="Closcursor-pointer"
                             onClick={() => setIsMenuOpen(false)} />
                     </div>
                     <div className="flex flex-col items-center space-y-4 cursor-pointer">
